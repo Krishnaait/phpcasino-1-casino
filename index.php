@@ -10,7 +10,7 @@ include 'includes/header.php';
         position: relative;
         width: 100%;
         height: 500px;
-        background-image: url('<?php echo SITE_URL; ?>assets/images/hero-banner.png');
+        background-image: url('<?php echo SITE_URL; ?>assets/images/hero-banner.webp');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -106,6 +106,78 @@ include 'includes/header.php';
         background: rgba(255, 255, 255, 0.2);
         transform: translateY(-3px);
         box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Content Section with Image */
+    .content-section {
+        margin: 80px 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: center;
+    }
+    
+    .content-section.reverse {
+        direction: rtl;
+    }
+    
+    .content-section.reverse > * {
+        direction: ltr;
+    }
+    
+    .content-image {
+        width: 100%;
+        height: 400px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 20px;
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+        border: 2px solid rgba(255, 215, 0, 0.2);
+    }
+    
+    .content-text {
+        padding: 20px;
+    }
+    
+    .content-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #ffd700, #00d9ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 25px;
+    }
+    
+    .content-description {
+        color: #b0b0b0;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 20px;
+    }
+    
+    .content-list {
+        list-style: none;
+        padding: 0;
+        margin: 25px 0;
+    }
+    
+    .content-list li {
+        color: #e0e0e0;
+        font-size: 1.05rem;
+        margin-bottom: 15px;
+        padding-left: 35px;
+        position: relative;
+        line-height: 1.6;
+    }
+    
+    .content-list li::before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        color: #ffd700;
+        font-weight: bold;
+        font-size: 1.3rem;
     }
     
     .games-section {
@@ -271,6 +343,21 @@ include 'includes/header.php';
         font-size: 1.05rem;
     }
     
+    @media (max-width: 992px) {
+        .content-section {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        .content-section.reverse {
+            direction: ltr;
+        }
+        
+        .content-image {
+            height: 300px;
+        }
+    }
+    
     @media (max-width: 768px) {
         .hero-banner {
             height: 400px;
@@ -293,6 +380,10 @@ include 'includes/header.php';
         }
         
         .section-title {
+            font-size: 2rem;
+        }
+        
+        .content-title {
             font-size: 2rem;
         }
         
@@ -325,6 +416,25 @@ include 'includes/header.php';
                     <a href="pages/about.php" class="cta-btn cta-secondary">ℹ️ Learn More</a>
                 </div>
             </div>
+        </div>
+    </div>
+    
+    <!-- Why Choose Us Section -->
+    <div class="content-section">
+        <div class="content-image" style="background-image: url('<?php echo SITE_URL; ?>assets/images/why-choose-us.webp');"></div>
+        <div class="content-text">
+            <h2 class="content-title">Why Choose VENTURES Casino?</h2>
+            <p class="content-description">
+                VENTURES Casino offers a premium social gaming experience designed for entertainment and fun. Our platform combines cutting-edge technology with user-friendly design to deliver an exceptional gaming environment.
+            </p>
+            <ul class="content-list">
+                <li><strong>100% Free to Play</strong> - No real money involved, just pure entertainment with virtual currency</li>
+                <li><strong>No Registration Required</strong> - Start playing instantly without creating an account or sharing personal data</li>
+                <li><strong>6 Unique Games</strong> - Enjoy a diverse collection of casino-style games including Dice, Mines, Slots, Roulette, Plinko, and Chicken Adventure</li>
+                <li><strong>Fair Gaming</strong> - All games use certified random number generators for transparent and fair gameplay</li>
+                <li><strong>24/7 Availability</strong> - Play anytime, anywhere on desktop or mobile devices</li>
+                <li><strong>Instant Reset</strong> - Run out of credits? Reset your balance instantly and continue playing</li>
+            </ul>
         </div>
     </div>
     
@@ -368,7 +478,7 @@ include 'includes/header.php';
                 <div class="game-card-content">
                     <div class="game-icon">🎡</div>
                     <h3 class="game-title">Roulette</h3>
-                    <p class="game-description">European roulette wheel with numbers 0-36! Bet on RED, BLACK, EVEN, ODD, HIGH, LOW and watch the wheel spin.</p>
+                    <p class="game-description">Spin the European roulette wheel! Bet on RED, BLACK, EVEN, ODD, HIGH, or LOW for 2x multiplier wins.</p>
                     <a href="games/roulette.php" class="game-btn">Play Roulette</a>
                 </div>
             </div>
@@ -378,63 +488,105 @@ include 'includes/header.php';
                 <div class="game-card-content">
                     <div class="game-icon">🎯</div>
                     <h3 class="game-title">Plinko</h3>
-                    <p class="game-description">Drop balls through pegs and watch them bounce! Physics-based game with multiplier slots up to 5x your bet.</p>
+                    <p class="game-description">Drop the ball and watch it bounce! Physics-based game with multipliers ranging from 3x to 8x based on landing position.</p>
                     <a href="games/plinko.php" class="game-btn">Play Plinko</a>
                 </div>
             </div>
             
-            <!-- Chicken Game -->
+            <!-- Chicken Adventure Game -->
             <div class="game-card">
                 <div class="game-card-content">
                     <div class="game-icon">🐔</div>
                     <h3 class="game-title">Chicken Adventure</h3>
-                    <p class="game-description">Guide the chicken through obstacles! 2D platformer game with progressive multipliers. Cash out before you crash!</p>
-                    <a href="games/chicken.php" class="game-btn">Play Chicken</a>
+                    <p class="game-description">Help the chicken avoid obstacles! Platformer game where distance traveled increases your multiplier and winnings.</p>
+                    <a href="games/chicken.php" class="game-btn">Play Chicken Adventure</a>
                 </div>
             </div>
         </div>
     </div>
     
+    <!-- Games Showcase Section -->
+    <div class="content-section reverse">
+        <div class="content-image" style="background-image: url('<?php echo SITE_URL; ?>assets/images/games-showcase.webp');"></div>
+        <div class="content-text">
+            <h2 class="content-title">Exciting Game Collection</h2>
+            <p class="content-description">
+                Our carefully curated selection of casino-style games offers something for everyone. Each game features unique mechanics, stunning visuals, and engaging gameplay designed to provide hours of entertainment.
+            </p>
+            <p class="content-description">
+                From classic favorites like Slots and Roulette to innovative games like Mines and Plinko, every game is optimized for smooth performance across all devices. Experience the excitement of a real casino from the comfort of your home!
+            </p>
+            <ul class="content-list">
+                <li><strong>Diverse Game Mechanics</strong> - Each game offers unique gameplay and winning strategies</li>
+                <li><strong>Progressive Multipliers</strong> - Win bigger as you play smarter and take calculated risks</li>
+                <li><strong>Instant Results</strong> - No waiting, all games provide immediate feedback and payouts</li>
+                <li><strong>Mobile Optimized</strong> - Play seamlessly on smartphones, tablets, and desktop computers</li>
+            </ul>
+        </div>
+    </div>
+    
     <!-- Features Section -->
     <div class="features-section">
-        <h2 class="features-title">✨ Why Choose VENTURES Casino?</h2>
+        <h2 class="features-title">✨ Platform Features</h2>
         
         <div class="features-grid">
             <div class="feature-box">
-                <div class="feature-icon">💰</div>
-                <h3 class="feature-title">100% Free to Play</h3>
-                <p class="feature-text">No deposits, no withdrawals, no hidden costs. Pure entertainment with virtual currency.</p>
-            </div>
-            
-            <div class="feature-box">
-                <div class="feature-icon">⚡</div>
-                <h3 class="feature-title">Instant Play</h3>
-                <p class="feature-text">No login or registration required. Start playing immediately with ₹10,000 virtual balance.</p>
-            </div>
-            
-            <div class="feature-box">
                 <div class="feature-icon">🎮</div>
-                <h3 class="feature-title">6 Unique Games</h3>
-                <p class="feature-text">Diverse collection of casino games with different mechanics and exciting gameplay experiences.</p>
-            </div>
-            
-            <div class="feature-box">
-                <div class="feature-icon">📱</div>
-                <h3 class="feature-title">Mobile Friendly</h3>
-                <p class="feature-text">Fully responsive design. Play seamlessly on any device - desktop, tablet, or smartphone.</p>
+                <h3 class="feature-title">Easy to Play</h3>
+                <p class="feature-text">Simple controls and intuitive interface make it easy for anyone to start playing immediately.</p>
             </div>
             
             <div class="feature-box">
                 <div class="feature-icon">🔒</div>
                 <h3 class="feature-title">Safe & Secure</h3>
-                <p class="feature-text">Session-based gameplay with no personal data collection. Your privacy is our priority.</p>
+                <p class="feature-text">No personal data collection, no downloads required. Your privacy is our priority.</p>
+            </div>
+            
+            <div class="feature-box">
+                <div class="feature-icon">📱</div>
+                <h3 class="feature-title">Mobile Friendly</h3>
+                <p class="feature-text">Fully responsive design works perfectly on all devices - desktop, tablet, and mobile.</p>
+            </div>
+            
+            <div class="feature-box">
+                <div class="feature-icon">⚡</div>
+                <h3 class="feature-title">Instant Play</h3>
+                <p class="feature-text">No registration, no downloads. Click and play your favorite games instantly.</p>
             </div>
             
             <div class="feature-box">
                 <div class="feature-icon">🎯</div>
                 <h3 class="feature-title">Fair Gaming</h3>
-                <p class="feature-text">Transparent algorithms and certified random number generators ensure fair play for everyone.</p>
+                <p class="feature-text">All games use provably fair algorithms to ensure transparent and unbiased results.</p>
             </div>
+            
+            <div class="feature-box">
+                <div class="feature-icon">🔄</div>
+                <h3 class="feature-title">Unlimited Credits</h3>
+                <p class="feature-text">Reset your virtual balance anytime with one click. Play as much as you want!</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Responsible Gaming Section -->
+    <div class="content-section">
+        <div class="content-image" style="background-image: url('<?php echo SITE_URL; ?>assets/images/responsible-gaming.webp');"></div>
+        <div class="content-text">
+            <h2 class="content-title">Responsible Gaming Commitment</h2>
+            <p class="content-description">
+                At VENTURES Casino, we are committed to promoting responsible gaming practices. Our platform is designed purely for entertainment purposes using virtual currency with no real-world monetary value.
+            </p>
+            <p class="content-description">
+                We enforce strict age restrictions and provide resources to ensure gaming remains a fun and safe activity for all users. Our platform does not involve real money gambling, eliminating financial risks while preserving the entertainment value.
+            </p>
+            <ul class="content-list">
+                <li><strong>18+ Only</strong> - Strict age verification and compliance with responsible gaming standards</li>
+                <li><strong>No Real Money</strong> - All currency is virtual with zero monetary value</li>
+                <li><strong>Entertainment Focus</strong> - Designed for fun, not profit or financial gain</li>
+                <li><strong>Parental Controls</strong> - Resources and guidelines for parents to protect minors</li>
+                <li><strong>Support Resources</strong> - Links to responsible gaming organizations and support services</li>
+            </ul>
+            <a href="pages/responsible-gaming.php" class="cta-btn cta-primary" style="display: inline-block; margin-top: 20px;">Learn More About Responsible Gaming</a>
         </div>
     </div>
 </div>
