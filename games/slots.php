@@ -543,7 +543,8 @@ async function spinSlots() {
             // WIN!
             const multiplier = results[0].multiplier;
             const winAmount = betAmount * multiplier;
-            await updateBalance(winAmount);
+            const netWin = winAmount - betAmount; // Only add the profit
+            await updateBalance(netWin);
             
             // Add winning animation
             reels.forEach(reel => reel.classList.add('winning'));

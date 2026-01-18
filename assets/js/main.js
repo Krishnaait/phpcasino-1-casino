@@ -137,6 +137,14 @@ function validateBet(bet) {
         return { valid: false, message: `Maximum bet is ${formatCurrency(MAX_BET)}` };
     }
     
+    // Check if user has sufficient balance
+    const balanceText = document.getElementById('balance-display')?.textContent || '₹0.00';
+    const balance = parseFloat(balanceText.replace(/[₹,]/g, ''));
+    
+    if (bet > balance) {
+        return { valid: false, message: 'Insufficient balance! Please reset your credits.' };
+    }
+    
     return { valid: true, message: 'Bet is valid' };
 }
 

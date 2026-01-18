@@ -569,7 +569,8 @@ async function spinWheel() {
         
         if (won) {
             const winAmount = betAmount * 2;
-            await updateBalance(winAmount);
+            const netWin = betAmount; // Only add the profit (2x - bet = 1x profit)
+            await updateBalance(netWin);
             
             const messageDiv = document.createElement('div');
             messageDiv.className = 'result-message win';

@@ -594,7 +594,8 @@ function endChickenGame(won) {
     gameState.isRunning = false;
     
     if (won) {
-        updateBalance(gameState.currentWin);
+        const netWin = gameState.currentWin - gameState.betAmount; // Only add the profit
+        updateBalance(netWin);
         document.getElementById('resultArea').innerHTML = `<div class="result-message win">✨ CASHED OUT! Won ${formatCurrency(gameState.currentWin)} ✨</div>`;
         showNotification(`Cashed out! Won ${formatCurrency(gameState.currentWin)}!`, 'success');
     } else {

@@ -478,11 +478,12 @@ function cashoutMines() {
     
     gameState.isPlaying = false;
     const winAmount = gameState.betAmount * gameState.multiplier;
+    const netWin = winAmount - gameState.betAmount; // Only add the profit
     
     document.getElementById('resultArea').innerHTML = `<div class="result-message win">✨ CASHED OUT! Won ${formatCurrency(winAmount)} ✨</div>`;
     showNotification(`Cashed out! Won ${formatCurrency(winAmount)}!`, 'success');
     
-    updateBalance(winAmount);
+    updateBalance(netWin);
     endMinesGame(true);
 }
 

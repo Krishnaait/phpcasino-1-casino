@@ -455,8 +455,9 @@ function animate() {
         if (multiplier !== null) {
             // Ball reached bottom
             const payout = currentBet * multiplier;
+            const netWin = payout - currentBet; // Only add the profit, not the full payout
             totalWins += payout;
-            updateBalance(payout);
+            updateBalance(netWin);
             
             document.getElementById('resultArea').innerHTML = `<div class="result-message win">✨ ${multiplier}x WIN! +${formatCurrency(payout)} ✨</div>`;
             showNotification(`Won ${formatCurrency(payout)}!`, 'success');

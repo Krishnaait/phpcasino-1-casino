@@ -504,13 +504,14 @@ function playDice() {
         
         // Calculate payout
         const payout = won ? betAmount * 2 : 0;
+        const netWin = won ? betAmount : 0; // Only add the profit (2x - bet = 1x profit)
         
         // Show result
         const resultArea = document.getElementById('resultArea');
         if (won) {
             resultArea.innerHTML = `<div class="result-message win">✨ YOU WON! +${formatCurrency(payout)} ✨</div>`;
             showNotification(`Won ${formatCurrency(payout)}!`, 'success');
-            updateBalance(payout);
+            updateBalance(netWin);
         } else {
             resultArea.innerHTML = `<div class="result-message lose">❌ YOU LOST ❌</div>`;
             showNotification(`Lost ${formatCurrency(betAmount)}!`, 'error');
