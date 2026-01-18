@@ -139,6 +139,12 @@ header {
     width: 100%;
 }
 
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
 .balance-display {
     background: linear-gradient(135deg, var(--accent-gold), #ffed4e);
     color: var(--text-dark);
@@ -147,6 +153,32 @@ header {
     font-weight: 700;
     font-size: 1.1rem;
     box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+.reset-btn {
+    background: linear-gradient(135deg, #ff6b35, #ff8c42);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(255, 107, 53, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.reset-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(255, 107, 53, 0.5);
+    background: linear-gradient(135deg, #ff8c42, #ff6b35);
+}
+
+.reset-btn:active {
+    transform: translateY(0);
 }
 
 /* ==========================================

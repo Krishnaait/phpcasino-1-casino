@@ -46,8 +46,13 @@ $balance = getUserBalance();
                 </ul>
             </nav>
             
-            <div class="balance-display" id="balance-display">
-                <?php echo formatCurrency($balance); ?>
+            <div class="header-actions">
+                <div class="balance-display" id="balance-display">
+                    <?php echo formatCurrency($balance); ?>
+                </div>
+                <button class="reset-btn" onclick="resetBalance()" title="Reset Balance">
+                    <i class="fas fa-redo"></i> Reset
+                </button>
             </div>
         </div>
     </header>
