@@ -13,7 +13,9 @@ if (session_status() === PHP_SESSION_NONE) {
 define('INITIAL_BALANCE', 10000);
 define('MIN_BET', 200);
 define('MAX_BET', 5500);
-define('SITE_URL', 'http://localhost:8000/');
+
+// Dynamic Site URL - Works on any environment (root-relative path)
+define('SITE_URL', '/');
 
 // Company Information
 define('COMPANY_NAME', 'VENTURES PRIVATE LIMITED');
