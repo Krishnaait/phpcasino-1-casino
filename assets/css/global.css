@@ -384,9 +384,18 @@ header {
     padding: var(--spacing-lg);
     border-radius: var(--radius-lg);
     font-weight: 600;
-    z-index: 2000;
+    z-index: 9999;
     animation: slideIn 0.3s ease;
     max-width: 400px;
+    min-width: 300px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    line-height: 1.5;
 }
 
 @keyframes slideIn {
